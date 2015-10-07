@@ -1,17 +1,18 @@
 //your code here
-NormalParticle[] bob;
+Particle[] bob;
 
 
 void setup()
 {
 
   size(500,500);
-    bob = new NormalParticle[50];
+    bob = new Particle[50];
   for(int i = 0; i<bob.length; i++){
      bob[i] = new NormalParticle();
   
   }
   bob[49] = new JumboParticle();
+    bob[48] = new OddballParticle();
   //your code here
 }
 void draw()
@@ -31,7 +32,7 @@ class NormalParticle  implements Particle
   
   
 
-  int colors;
+  int colors, colors2, colors3;
   int sise;
   double X, Y, Angle, Speed; 
   NormalParticle(){
@@ -41,7 +42,9 @@ class NormalParticle  implements Particle
   Angle = Math.random()*200;
   Speed = Math.random()*6+4;
   
-  
+  colors = (int)(Math.random()*255);
+    colors2 = (int)(Math.random()*255);
+      colors3 = (int)(Math.random()*255);
   }
  public void move(){
    X=X+ Math.cos(Angle) * Speed;
@@ -58,8 +61,8 @@ class NormalParticle  implements Particle
    }
   }
   public void show(){
-    stroke(255,255,255);
- fill(255,255,255);     
+    stroke(colors3,colors,colors2); 
+ fill(colors3,colors,colors2);     
   ellipse((float)X, (float)Y, sise,sise);
   }
   //your code here
@@ -73,17 +76,48 @@ interface Particle
 }
 class OddballParticle implements Particle //uses an interface
 {
+  int xBac, yBac;
+       int changeX = 1;
+  int changeY = 1;
+    int colors;
+  int sise;
+  double X, Y, Angle, Speed; 
+  OddballParticle(){
+     
+    sise=10;
+
+       xBac = (int)(Math.random()*500);
+      yBac = (int)(Math.random()*500);
+  
+  }
   public void move(){
+
+            xBac = xBac +  (int)(Math.random()*3-changeX);
+      yBac = yBac + (int)(Math.random()*3-changeY);
+      if(sise<30){
+      sise++;
+      }else if(sise>=29){
+      sise--;
+      }
+      
   }
   public void show(){
+        stroke(255);
+ fill(255);     
+  ellipse(xBac, yBac, sise,sise);
+
   }
   //your code here
 }
 class JumboParticle extends NormalParticle//uses inheritance
 {
   JumboParticle(){
+      colors = (int)(Math.random()*255);
+    colors2 = (int)(Math.random()*255);
+      colors3 = (int)(Math.random()*255);
   sise= 50;
   }
   //your code here
 }
+
 
