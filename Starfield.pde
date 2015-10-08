@@ -84,7 +84,7 @@ class OddballParticle implements Particle //uses an interface
   double X, Y, Angle, Speed; 
   OddballParticle(){
      
-    sise=10;
+    sise=30;
 
        xBac = (int)(Math.random()*500);
       yBac = (int)(Math.random()*500);
