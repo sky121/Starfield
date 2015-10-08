@@ -77,8 +77,8 @@ interface Particle
 class OddballParticle implements Particle //uses an interface
 {
   int xBac, yBac;
-       int changeX = 1;
-  int changeY = 1;
+       int changeX = 5;
+  int changeY = 5;
     int colors;
   int sise;
   double X, Y, Angle, Speed; 
@@ -92,12 +92,13 @@ class OddballParticle implements Particle //uses an interface
   }
   public void move(){
 
-            xBac = xBac +  (int)(Math.random()*3-changeX);
-      yBac = yBac + (int)(Math.random()*3-changeY);
-      if(sise<30){
-      sise++;
-      }else if(sise>=29){
-      sise--;
+            xBac = xBac +  (int)(Math.random()*10-changeX);
+      yBac = yBac + (int)(Math.random()*10-changeY);
+      if(xBac>500||xBac<0){
+       xBac = (int)(Math.random()*500);
+      }
+      if(yBac>500||yBac<0){
+       yBac = (int)(Math.random()*500);
       }
       
   }
@@ -121,4 +122,3 @@ class JumboParticle extends NormalParticle//uses inheritance
 }
 
 
- 
